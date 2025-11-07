@@ -1,0 +1,7 @@
+{
+  "name": "empatif-launcher",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
