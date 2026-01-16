@@ -14,7 +14,7 @@
   background: var(--ion-color-primary);
   border-bottom-left-radius: 28px;
   border-bottom-right-radius: 28px;
-  padding: 32px 16px 48px;
+  padding: 16px 16px 32px;
 }
 
 .hero-top {
@@ -40,7 +40,6 @@
 
 .home-body {
   padding: 0 20px 28px;
-  margin-top: -32px;
 }
 
 .featured-card {
@@ -52,7 +51,7 @@
 
 .featured-media {
   background: linear-gradient(135deg, #6b4cf6, #9b7bff);
-  min-height: 140px;
+  min-height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
