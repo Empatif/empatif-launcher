@@ -158,12 +158,13 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
           <div class="marker-circle">
             <img src="assets/EMPATIF_icono_morado.png" alt="Empatif" class="marker-logo" />
           </div>
+          <div class="marker-tail"></div>
         </div>
       `,
       className: 'empatif-marker-wrapper',
-      iconSize: [60, 60],
-      iconAnchor: [30, 60],
-      popupAnchor: [0, -60],
+      iconSize: [60, 80],
+      iconAnchor: [30, 80],
+      popupAnchor: [0, -70],
     });
 
     return L.marker([delegacion.latitude, delegacion.longitude], { icon });

@@ -19,12 +19,10 @@
         *ngIf="featuredLink"
         (click)="openExternal(featuredLink.url)"
       >
-        <div class="featured-media">
-          <ion-icon [name]="featuredLink.icono" aria-hidden="true"></ion-icon>
-        </div>
+        <ion-img src="https://empatif.com/wp-content/uploads/2025/12/m.jpg" alt="{{ featuredLink.titulo }}"></ion-img>
         <ion-card-content class="featured-content">
           <h2>{{ featuredLink.titulo }}</h2>
-          <p *ngIf="featuredLink.descripcion">{{ featuredLink.descripcion }}</p>
+          <ion-icon [name]="featuredLink.icono" aria-hidden="true"></ion-icon>
         </ion-card-content>
       </ion-card>
 

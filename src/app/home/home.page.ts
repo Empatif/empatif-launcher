@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { HOME_LINKS, HomeLink } from '../config/app-links';
+import { FEATURED_LINK, HOME_LINKS, HomeLink } from '../config/app-links';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -13,16 +13,13 @@ import { environment } from 'src/environments/environment';
 })
 export class HomePage implements OnInit {
   title = environment.appTitle;
-  links: HomeLink[] = HOME_LINKS;
-  featuredLink: HomeLink | null = null;
-  tileLinks: HomeLink[] = [];
+  featuredLink: HomeLink | null = FEATURED_LINK;
+  tileLinks: HomeLink[] = HOME_LINKS;
   loading = true;
 
   constructor() {}
 
   ngOnInit() {
-    this.featuredLink = this.links[0] ?? null;
-    this.tileLinks = this.links;
     setTimeout(() => (this.loading = false), environment.splashDurationMs);
   }
 

@@ -8,34 +8,42 @@ export interface HomeLink {
   url: string;
 }
 
+export const FEATURED_LINK: HomeLink = {
+  id: 'registro-horario',
+  titulo: 'Registro horario',
+  descripcion: 'Registra tu jornada laboral fácilmente.',
+  icono: 'time-outline',
+  url: 'https://example.com'
+};
+
 export const HOME_LINKS: HomeLink[] = [
   {
-    id: 'zoho',
-    titulo: 'Zoho CRM',
-    descripcion: 'Gestión comercial y oportunidades.',
+    id: 'portal-trabajador',
+    titulo: 'Portal Trabajador',
+    descripcion: 'Accede al portal de empleados.',
+    icono: 'person-outline',
+    url: 'https://example.com'
+  },
+  {
+    id: 'ofertas-empleo',
+    titulo: 'Ofertas de Empleo',
+    descripcion: 'Consulta las vacantes disponibles.',
     icono: 'briefcase-outline',
-    url: 'https://crm.zoho.eu'
+    url: 'https://example.com'
   },
   {
-    id: 'netsuite',
-    titulo: 'NetSuite',
-    descripcion: 'ERP y finanzas.',
-    icono: 'stats-chart-outline',
-    url: 'https://system.netsuite.com'
+    id: 'formacion',
+    titulo: 'Formación',
+    descripcion: 'Plataforma de cursos y capacitaciones.',
+    icono: 'school-outline',
+    url: 'https://example.com'
   },
   {
-    id: 'respond',
-    titulo: 'Respond.io',
-    descripcion: 'Atención multicanal.',
-    icono: 'chatbubbles-outline',
-    url: 'https://app.respond.io'
-  },
-  {
-    id: 'bizneo',
-    titulo: 'Bizneo',
-    descripcion: 'Gestión de talento.',
-    icono: 'people-outline',
-    url: 'https://app.bizneo.com'
+    id: 'manual',
+    titulo: 'Manual de Uso',
+    descripcion: 'Guía rápida para empleados.',
+    icono: 'help-circle-outline',
+    url: 'https://example.com'
   }
 ];
 
