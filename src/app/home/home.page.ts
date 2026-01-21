@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { FEATURED_LINK, HOME_LINKS, HomeLink } from '../config/app-links';
+import { FEATURED_LINK, HOME_LINKS } from '../config/app-links';
 import { environment } from 'src/environments/environment';
+import { HomeLink } from '../shared/models/types.model';
 
 @Component({
   selector: 'app-home',

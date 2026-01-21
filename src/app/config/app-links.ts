@@ -1,12 +1,4 @@
-import { RecursoInfo } from '../shared/models/recurso.model';
-
-export interface HomeLink {
-  id: string;
-  titulo: string;
-  descripcion?: string;
-  icono: string;
-  url: string;
-}
+import { HomeLink, RecursoInfo } from '../shared/models/types.model';
 
 export const FEATURED_LINK: HomeLink = {
   id: 'registro-horario',

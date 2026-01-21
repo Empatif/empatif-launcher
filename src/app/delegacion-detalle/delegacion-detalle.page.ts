@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { Delegacion } from '../shared/models/delegacion.model';
+import { Delegacion } from '../shared/models/types.model';
 import { DelegacionesService } from '../services/delegaciones.service';
 
 @Component({

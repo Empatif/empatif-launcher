@@ -8,7 +8,7 @@ import 'leaflet-providers';
 import { register } from 'swiper/element/bundle';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-import { Delegacion } from '../shared/models/delegacion.model';
+import { Delegacion } from '../shared/models/types.model';
 import { DelegacionesService } from '../services/delegaciones.service';
 
 // Registrar elementos de Swiper

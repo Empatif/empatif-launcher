@@ -1,59 +1,178 @@
 import { Injectable } from '@angular/core';
-import { Delegacion } from '../shared/models/delegacion.model';
+import { Delegacion } from '../shared/models/types.model';
 
 const DELEGACIONES: Delegacion[] = [
   {
-    id: 'manresa',
-    nombre: 'Delegación Manresa',
-    direccion: 'Ctra. de Cardona, 56 -60, 08242 Manresa, Barcelona',
+    id: 'boiro',
+    nombre: 'Boiro',
+    direccion: 'Av. da Constitución, 7, 15930 Boiro, A Coruña',
+    telefono: '+34 881 06 24 03',
+    email: 'contacto@empatif.com',
+    horario: 'L-V 09:00 - 18:00',
+    imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
+    mapsUrl: 'https://maps.app.goo.gl/kfHDGLsp4N2JmTTx6',
+    mapsPlaceId: 'ChIJU7Jvqu49Lw0RhVKEyqV5tkU',
+    coordenadas: [42.650290441335876, -8.879037061556206]
+  },
+  {
+    id: 'lugo',
+    nombre: 'Lugo',
+    direccion: 'R. Cantigas e Frores, 6, Entlo. F, 27002 Lugo',
+    telefono: '+34 982 92 00 72',
+    email: 'contacto@empatif.com',
+    horario: 'L-V 09:00 - 18:00',
+    imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
+    mapsUrl: 'https://maps.app.goo.gl/s9pk1nRnRhinqAHg8',
+    mapsPlaceId: 'ChIJa6PV0_xbvUsRLy2OhndRMWE',
+    coordenadas: [42.996335574675584, -7.5487161002165815]
+  },
+  {
+    id: 'manresa-central',
+    nombre: 'Manresa - Central',
+    direccion: 'Ctra. de Cardona, 56 -60, 08242 Manresa',
     telefono: '+34 938 78 66 35',
-    email: 'manresa@empatif.com',
+    email: 'contacto@empatif.com',
     horario: 'L-V 09:00 - 18:00',
     imagenUrl:
       'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
-    mapsUrl: 'https://maps.app.goo.gl/U7NVjMaa3hMn6CdN9',
-    latitude: 41.72606598588227,
-    longitude: 1.8189699965372035
+    mapsUrl: 'https://maps.app.goo.gl/8XawVr8H8ct4D3fF7',
+    mapsPlaceId: 'ChIJCfG6VQlYpBIRQ8QzNOd3690',
+    coordenadas: [41.72604966951187, 1.8189706747432848]
   },
   {
-    id: 'barcelona',
-    nombre: 'Delegación Barcelona',
-    direccion: 'Carrer de la Marina, 123, 08013 Barcelona',
-    telefono: '+34 931 234 567',
-    email: 'barcelona@empatif.com',
+    id: 'manresa-centro-médico',
+    nombre: 'Manresa Centro Médico',
+    direccion: 'Ctra. de Cardona, 56 -60, 08242 Manresa',
+    telefono: '+34 938 78 66 35',
+    email: 'contacto@empatif.com',
     horario: 'L-V 09:00 - 18:00',
     imagenUrl:
-      'https://images.unsplash.com/photo-1487014679447-9f8336841d58?auto=format&fit=crop&w=1200&q=80',
-    mapsUrl: 'https://maps.google.com/?q=Barcelona',
-    latitude: 41.3851,
-    longitude: 2.1734
+      'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
+    mapsUrl: 'https://maps.app.goo.gl/oDp4rxqaeyFMVcwNA',
+    mapsPlaceId: 'ChIJCfG6VQlYpBIRQ8QzNOd3690',
+    coordenadas: [41.72604966951187, 1.8189706747432848]
+  },
+  {
+    id: 'vic',
+    nombre: 'Vic',
+    direccion: 'Ronda de Francesc Camprodon, 22, 08500 Vic',
+    telefono: '+34 931 31 33 70',
+    email: 'contacto@empatif.com',
+    horario: 'L-V 09:00 - 18:00',
+    imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
+    mapsUrl: 'https://maps.app.goo.gl/bxeusBtP9XHzs4rm8',
+    mapsPlaceId: 'ChIJ4_4iuionpRIRbrwlx5X9-XI',
+    coordenadas: [41.93400878594537, 2.253149937626702]
+  },
+  {
+    id: 'sabadell',
+    nombre: 'Sabadell',
+    direccion: 'Ronda de Ponent, 132, 08201 Sabadell',
+    telefono: '+34 931 31 33 88',
+    email: 'contacto@empatif.com',
+    horario: 'L-V 09:00 - 18:00',
+    imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
+    mapsUrl: 'https://maps.app.goo.gl/NmC2rMLXJPueXEj16',
+    mapsPlaceId: 'ChIJxy6E6SmVpBIRvExoSzlEDc0',
+    coordenadas: [41.54789718105284, 2.0992823611220266]
+  },
+  {
+    id: 'granollers',
+    nombre: 'Granollers',
+    direccion: 'Carrer de l\'Enginyer, 5, 08402 Granollers',
+    telefono: '+34 938 61 39 48',
+    email: 'contacto@empatif.com',
+    horario: 'L-V 09:00 - 18:00',
+    imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
+    mapsUrl: 'https://maps.app.goo.gl/geio4hrNJaVSAem68',
+    mapsPlaceId: 'ChIJBalx7nLHpBIRx45Hj8tYu4I',
+    coordenadas: [41.60976356288319, 2.2900589262793676]
+  },
+  {
+    id: 'barcelona-hosteleria',
+    nombre: 'Barcelona Hostelería',
+    direccion: 'Carrer de Pallars, 108, Sant Martí, 08018 Barcelona',
+    telefono: '+34 600 76 94 60',
+    email: 'contacto@empatif.com',
+    horario: 'L-V 09:00 - 18:00',
+    imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
+    mapsUrl: 'https://maps.app.goo.gl/gbcfCkJSJn28DSxv5',
+    mapsPlaceId: 'ChIJ-QayfzKjpBIRFeU1J1u-GRQ',
+    coordenadas: [41.39608042680115, 2.191100361375366]
+  },
+  {
+    id: 'zaragoza',
+    nombre: 'Zaragoza',
+    direccion: 'C. de Alfonso I, 17, 2ª planta, Casco Antiguo, 50003 Zaragoza',
+    telefono: '+34 632 26 35 92',
+    email: 'contacto@empatif.com',
+    horario: 'L-V 09:00 - 18:00',
+    imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
+    mapsUrl: 'https://maps.app.goo.gl/uppDcyKUSvnXYEm4A',
+    mapsPlaceId: 'ChIJmXUmVVYVWQ0RhlY7b8kWKNE',
+    coordenadas: [41.65389030731155, -0.8813496864403141]
   },
   {
     id: 'madrid',
-    nombre: 'Delegación Madrid',
-    direccion: 'Calle de Alcalá, 45, 28014 Madrid',
-    telefono: '+34 911 456 789',
-    email: 'madrid@empatif.com',
+    nombre: 'Madrid',
+    direccion: 'Calle de María de Molina, 39, 3ª planta, Chamartín, 28006 Madrid',
+    telefono: '+34 911094072',
+    email: 'contacto@empatif.com',
     horario: 'L-V 09:00 - 18:00',
-    imagenUrl:
-      'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80',
-    mapsUrl: 'https://maps.google.com/?q=Madrid',
-    latitude: 40.4168,
-    longitude: -3.7038
+    imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
+    mapsUrl: 'https://maps.app.goo.gl/AN4Ytwj7qFm3LAuB9',
+    mapsPlaceId: 'ChIJEZxuItspQg0R4p_9zqRY_Ys',
+    coordenadas: [40.43776866992795, -3.679661499999999]
   },
   {
-    id: 'valencia',
-    nombre: 'Delegación Valencia',
-    direccion: 'Av. del Puerto, 88, 46023 Valencia',
-    telefono: '+34 961 234 987',
-    email: 'valencia@empatif.com',
-    horario: 'L-V 08:30 - 17:30',
-    imagenUrl:
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
-    latitude: 39.4699,
-    longitude: -0.3763
+    id: 'alcala-de-henares',
+    nombre: 'Alcalá de Henares',
+    direccion: 'C. San Julián, 4, 28801 Alcalá de Henares',
+    telefono: '+34 911 09 40 72',
+    email: 'contacto@empatif.com',
+    horario: 'L-V 09:00 - 18:00',
+    imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
+    mapsUrl: 'https://maps.app.goo.gl/G6WRwCPj9KmigVnNA',
+    mapsPlaceId: 'ChIJtwCaQ7lJQg0RCufOVSETY0E',
+    coordenadas: [40.47965917371905, -3.3637497640463887]
+  },
+  {
+    id: 'a-coruna',
+    nombre: 'A Coruña',
+    direccion: 'Calle Roberto Tojeiro Díaz, 1, 15009 A Coruña',
+    telefono: '+34 881 15 00 20',
+    email: 'contacto@empatif.com',
+    horario: 'L-V 09:00 - 18:00',
+    imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
+    mapsUrl: 'https://maps.app.goo.gl/Ctu6BidPBT3XU89GA',
+    mapsPlaceId: 'ChIJg1GqosZ9Lg0RPKvjIGbr2Jw',
+    coordenadas: [43.35244881241159, -8.40186202944785]
+  },
+  {
+    id: 'vilagarcia-de-arousa',
+    nombre: 'Vilagarcía de Arousa',
+    direccion: 'Rúa López Cuevillas, 2, 36600 Vilagarcía de Arousa',
+    telefono: '+34 886 06 01 29',
+    email: 'contacto@empatif.com',
+    horario: 'L-V 09:00 - 18:00',
+    imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
+    mapsUrl: 'https://maps.app.goo.gl/tvYN5tAYoaWvnVtU9',
+    mapsPlaceId: 'ChIJOcv0290VLw0RvrTk-VjNf-M',
+    coordenadas: [42.59123846828437, -8.767573974108274]
+  },
+  {
+    id: 'vigo',
+    nombre: 'Vigo',
+    direccion: 'Rúa das Teixugueiras, 32, Bloque Norte Local 1, 36212 Vigo',
+    telefono: '+34 986 60 70 45',
+    email: 'contacto@empatif.com',
+    horario: 'L-V 09:00 - 18:00',
+    imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
+    mapsUrl: 'https://maps.app.goo.gl/yMBo38uFxdNDQpes5',
+    mapsPlaceId: 'ChIJV9TbwIaLJQ0RsvniurgUphs',
+    coordenadas: [42.20819007160372, -8.758682385387326]
   }
-];
+]
 
 @Injectable({
   providedIn: 'root'
