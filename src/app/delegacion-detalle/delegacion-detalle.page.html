@@ -1,7 +1,7 @@
 <ion-header translucent="true">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button text="" defaultHref="/tabs/delegaciones" ></ion-back-button>
+      <ion-back-button text="" defaultHref="/tabs/delegaciones"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ 'DELEGACION.TITULO' | translate }}</ion-title>
   </ion-toolbar>
@@ -11,13 +11,23 @@
   <ng-container *ngIf="delegacion; else notFound">
     <ion-card>
       <ion-card-header>
-        <ion-card-title>{{ 'DELEGACION.DELEGACION' | translate }} {{ delegacion.nombre }}</ion-card-title>
+        <ion-card-title
+          >{{ 'DELEGACION.DELEGACION' | translate }} {{ delegacion.nombre }}</ion-card-title
+        >
       </ion-card-header>
       <ion-card-content>
-        <p><strong>{{ 'DELEGACION.DETALLE.DIRECCION' | translate }}:</strong> {{ delegacion.direccion }}</p>
-        <p><strong>{{ 'DELEGACION.DETALLE.TELEFONO' | translate }}:</strong> {{ delegacion.telefono }}</p>
+        <p>
+          <strong>{{ 'DELEGACION.DETALLE.DIRECCION' | translate }}:</strong> {{ delegacion.direccion
+          }}
+        </p>
+        <p>
+          <strong>{{ 'DELEGACION.DETALLE.TELEFONO' | translate }}:</strong> {{ delegacion.telefono
+          }}
+        </p>
         <p><strong>{{ 'DELEGACION.DETALLE.EMAIL' | translate }}:</strong> {{ delegacion.email }}</p>
-        <p><strong>{{ 'DELEGACION.DETALLE.HORARIO' | translate }}:</strong> {{ delegacion.horario }}</p>
+        <p>
+          <strong>{{ 'DELEGACION.DETALLE.HORARIO' | translate }}:</strong> {{ delegacion.horario }}
+        </p>
       </ion-card-content>
     </ion-card>
 
@@ -43,7 +53,9 @@
     <div class="empty-state">
       <ion-icon name="alert-circle-outline" aria-hidden="true"></ion-icon>
       <p>{{ 'DELEGACION.ERROR.MENSAJE' | translate }}</p>
-      <ion-button expand="block" (click)="goBack()">{{ 'DELEGACION.ERROR.VOLVER' | translate }}</ion-button>
+      <ion-button expand="block" (click)="goBack()"
+        >{{ 'DELEGACION.ERROR.VOLVER' | translate }}</ion-button
+      >
     </div>
   </ng-template>
 </ion-content>

@@ -20,7 +20,11 @@
   ></ion-searchbar>
 
   <!-- Carrusel en la parte baja -->
-  <div #carouselContainer class="carousel-container" *ngIf="filteredDelegaciones.length; else emptyState">
+  <div
+    #carouselContainer
+    class="carousel-container"
+    *ngIf="filteredDelegaciones.length; else emptyState"
+  >
     <swiper-container
       [attr.slides-per-view]="'auto'"
       [attr.centered-slides]="'true'"
@@ -30,7 +34,11 @@
       class="delegaciones-swiper"
       (swiperslidechange)="onSlideChange($event)"
     >
-      <swiper-slide *ngFor="let delegacion of filteredDelegaciones; let i = index" class="delegacion-slide" [attr.data-index]="i">
+      <swiper-slide
+        *ngFor="let delegacion of filteredDelegaciones; let i = index"
+        class="delegacion-slide"
+        [attr.data-index]="i"
+      >
         <ion-card
           class="delegacion-card"
           [class.active]="delegacion.id === activeDelegacion?.id"
@@ -39,7 +47,9 @@
         >
           <ion-img [src]="delegacion.imagenUrl" [alt]="delegacion.nombre"></ion-img>
           <ion-card-header>
-            <ion-card-title>{{ 'DELEGACIONES.DELEGACION' | translate }} {{ delegacion.nombre }}</ion-card-title>
+            <ion-card-title
+              >{{ 'DELEGACIONES.DELEGACION' | translate }} {{ delegacion.nombre }}</ion-card-title
+            >
           </ion-card-header>
           <ion-card-content>
             <div class="delegacion-address">

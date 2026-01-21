@@ -5,9 +5,8 @@
 export const environment = {
   production: false,
   appTitle: 'Empatif',
-  splashDurationMs: 1200
+  splashDurationMs: 1200,
 };
-
 
 /*
  * For easier debugging in development mode, you can import the following file

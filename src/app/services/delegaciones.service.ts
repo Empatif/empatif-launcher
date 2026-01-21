@@ -12,7 +12,7 @@ const DELEGACIONES: Delegacion[] = [
     imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
     mapsUrl: 'https://maps.app.goo.gl/kfHDGLsp4N2JmTTx6',
     mapsPlaceId: 'ChIJU7Jvqu49Lw0RhVKEyqV5tkU',
-    coordenadas: [42.650290441335876, -8.879037061556206]
+    coordenadas: [42.650290441335876, -8.879037061556206],
   },
   {
     id: 'lugo',
@@ -24,7 +24,7 @@ const DELEGACIONES: Delegacion[] = [
     imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
     mapsUrl: 'https://maps.app.goo.gl/s9pk1nRnRhinqAHg8',
     mapsPlaceId: 'ChIJa6PV0_xbvUsRLy2OhndRMWE',
-    coordenadas: [42.996335574675584, -7.5487161002165815]
+    coordenadas: [42.996335574675584, -7.5487161002165815],
   },
   {
     id: 'manresa-central',
@@ -33,11 +33,10 @@ const DELEGACIONES: Delegacion[] = [
     telefono: '+34 938 78 66 35',
     email: 'contacto@empatif.com',
     horario: 'L-V 09:00 - 18:00',
-    imagenUrl:
-      'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
+    imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
     mapsUrl: 'https://maps.app.goo.gl/8XawVr8H8ct4D3fF7',
     mapsPlaceId: 'ChIJCfG6VQlYpBIRQ8QzNOd3690',
-    coordenadas: [41.72604966951187, 1.8189706747432848]
+    coordenadas: [41.72604966951187, 1.8189706747432848],
   },
   {
     id: 'manresa-centro-médico',
@@ -46,11 +45,10 @@ const DELEGACIONES: Delegacion[] = [
     telefono: '+34 938 78 66 35',
     email: 'contacto@empatif.com',
     horario: 'L-V 09:00 - 18:00',
-    imagenUrl:
-      'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
+    imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
     mapsUrl: 'https://maps.app.goo.gl/oDp4rxqaeyFMVcwNA',
     mapsPlaceId: 'ChIJCfG6VQlYpBIRQ8QzNOd3690',
-    coordenadas: [41.72604966951187, 1.8189706747432848]
+    coordenadas: [41.72604966951187, 1.8189706747432848],
   },
   {
     id: 'vic',
@@ -62,7 +60,7 @@ const DELEGACIONES: Delegacion[] = [
     imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
     mapsUrl: 'https://maps.app.goo.gl/bxeusBtP9XHzs4rm8',
     mapsPlaceId: 'ChIJ4_4iuionpRIRbrwlx5X9-XI',
-    coordenadas: [41.93400878594537, 2.253149937626702]
+    coordenadas: [41.93400878594537, 2.253149937626702],
   },
   {
     id: 'sabadell',
@@ -74,19 +72,19 @@ const DELEGACIONES: Delegacion[] = [
     imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
     mapsUrl: 'https://maps.app.goo.gl/NmC2rMLXJPueXEj16',
     mapsPlaceId: 'ChIJxy6E6SmVpBIRvExoSzlEDc0',
-    coordenadas: [41.54789718105284, 2.0992823611220266]
+    coordenadas: [41.54789718105284, 2.0992823611220266],
   },
   {
     id: 'granollers',
     nombre: 'Granollers',
-    direccion: 'Carrer de l\'Enginyer, 5, 08402 Granollers',
+    direccion: "Carrer de l'Enginyer, 5, 08402 Granollers",
     telefono: '+34 938 61 39 48',
     email: 'contacto@empatif.com',
     horario: 'L-V 09:00 - 18:00',
     imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
     mapsUrl: 'https://maps.app.goo.gl/geio4hrNJaVSAem68',
     mapsPlaceId: 'ChIJBalx7nLHpBIRx45Hj8tYu4I',
-    coordenadas: [41.60976356288319, 2.2900589262793676]
+    coordenadas: [41.60976356288319, 2.2900589262793676],
   },
   {
     id: 'barcelona-hosteleria',
@@ -98,7 +96,7 @@ const DELEGACIONES: Delegacion[] = [
     imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
     mapsUrl: 'https://maps.app.goo.gl/gbcfCkJSJn28DSxv5',
     mapsPlaceId: 'ChIJ-QayfzKjpBIRFeU1J1u-GRQ',
-    coordenadas: [41.39608042680115, 2.191100361375366]
+    coordenadas: [41.39608042680115, 2.191100361375366],
   },
   {
     id: 'zaragoza',
@@ -110,7 +108,7 @@ const DELEGACIONES: Delegacion[] = [
     imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
     mapsUrl: 'https://maps.app.goo.gl/uppDcyKUSvnXYEm4A',
     mapsPlaceId: 'ChIJmXUmVVYVWQ0RhlY7b8kWKNE',
-    coordenadas: [41.65389030731155, -0.8813496864403141]
+    coordenadas: [41.65389030731155, -0.8813496864403141],
   },
   {
     id: 'madrid',
@@ -122,7 +120,7 @@ const DELEGACIONES: Delegacion[] = [
     imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
     mapsUrl: 'https://maps.app.goo.gl/AN4Ytwj7qFm3LAuB9',
     mapsPlaceId: 'ChIJEZxuItspQg0R4p_9zqRY_Ys',
-    coordenadas: [40.43776866992795, -3.679661499999999]
+    coordenadas: [40.43776866992795, -3.679661499999999],
   },
   {
     id: 'alcala-de-henares',
@@ -134,7 +132,7 @@ const DELEGACIONES: Delegacion[] = [
     imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
     mapsUrl: 'https://maps.app.goo.gl/G6WRwCPj9KmigVnNA',
     mapsPlaceId: 'ChIJtwCaQ7lJQg0RCufOVSETY0E',
-    coordenadas: [40.47965917371905, -3.3637497640463887]
+    coordenadas: [40.47965917371905, -3.3637497640463887],
   },
   {
     id: 'a-coruna',
@@ -146,7 +144,7 @@ const DELEGACIONES: Delegacion[] = [
     imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
     mapsUrl: 'https://maps.app.goo.gl/Ctu6BidPBT3XU89GA',
     mapsPlaceId: 'ChIJg1GqosZ9Lg0RPKvjIGbr2Jw',
-    coordenadas: [43.35244881241159, -8.40186202944785]
+    coordenadas: [43.35244881241159, -8.40186202944785],
   },
   {
     id: 'vilagarcia-de-arousa',
@@ -158,7 +156,7 @@ const DELEGACIONES: Delegacion[] = [
     imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
     mapsUrl: 'https://maps.app.goo.gl/tvYN5tAYoaWvnVtU9',
     mapsPlaceId: 'ChIJOcv0290VLw0RvrTk-VjNf-M',
-    coordenadas: [42.59123846828437, -8.767573974108274]
+    coordenadas: [42.59123846828437, -8.767573974108274],
   },
   {
     id: 'vigo',
@@ -170,12 +168,12 @@ const DELEGACIONES: Delegacion[] = [
     imagenUrl: 'https://empatif.com/wp-content/uploads/2024/10/Copia-de-Empatif-Meet-Banner.png',
     mapsUrl: 'https://maps.app.goo.gl/yMBo38uFxdNDQpes5',
     mapsPlaceId: 'ChIJV9TbwIaLJQ0RsvniurgUphs',
-    coordenadas: [42.20819007160372, -8.758682385387326]
-  }
-]
+    coordenadas: [42.20819007160372, -8.758682385387326],
+  },
+];
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DelegacionesService {
   getAll(): Delegacion[] {
@@ -183,6 +181,6 @@ export class DelegacionesService {
   }
 
   getById(id: string): Delegacion | undefined {
-    return DELEGACIONES.find(delegacion => delegacion.id === id);
+    return DELEGACIONES.find((delegacion) => delegacion.id === id);
   }
 }

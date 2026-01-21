@@ -8,27 +8,27 @@ export const routes: Routes = [
   },
   {
     path: 'tabs',
-    loadComponent: () => import('./tabs/tabs.page').then(m => m.TabsPage),
+    loadComponent: () => import('./tabs/tabs.page').then((m) => m.TabsPage),
     children: [
       {
         path: 'home',
-        loadComponent: () => import('./home/home.page').then(m => m.HomePage),
+        loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
       },
       {
         path: 'delegaciones',
         loadComponent: () =>
-          import('./delegaciones/delegaciones.page').then(m => m.DelegacionesPage),
+          import('./delegaciones/delegaciones.page').then((m) => m.DelegacionesPage),
       },
       {
         path: 'delegaciones/:id',
         loadComponent: () =>
           import('./delegacion-detalle/delegacion-detalle.page').then(
-            m => m.DelegacionDetallePage
+            (m) => m.DelegacionDetallePage,
           ),
       },
       {
         path: 'info',
-        loadComponent: () => import('./info/info.page').then(m => m.InfoPage),
+        loadComponent: () => import('./info/info.page').then((m) => m.InfoPage),
       },
       {
         path: '',

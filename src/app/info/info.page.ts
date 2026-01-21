@@ -22,11 +22,11 @@ export class InfoPage {
   }
 
   get recursosSection(): RecursoInfo[] {
-    return this.recursos.filter(recurso => recurso.seccion === 'recursos');
+    return this.recursos.filter((recurso) => recurso.seccion === 'recursos');
   }
 
   get guiasSection(): RecursoInfo[] {
-    return this.recursos.filter(recurso => recurso.seccion === 'guias');
+    return this.recursos.filter((recurso) => recurso.seccion === 'guias');
   }
 
   openResource(recurso: RecursoInfo) {

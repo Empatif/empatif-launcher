@@ -1,5 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, ViewChild, CUSTOM_ELEMENTS_SCHEMA, OnInit, OnDestroy } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  ViewChild,
+  CUSTOM_ELEMENTS_SCHEMA,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
@@ -21,7 +29,7 @@ type MapTheme = string;
 // Obtener los providers disponibles de leaflet-providers
 const getAvailableProviders = () => {
   const providers: Array<{ id: string; name: string }> = [];
-  
+
   // Seleccionar algunos de los mejores providers disponibles
   const selectedProviders = [
     'CartoDB.Positron',
@@ -35,7 +43,7 @@ const getAvailableProviders = () => {
     'Stamen.Terrain',
   ];
 
-  selectedProviders.forEach(provider => {
+  selectedProviders.forEach((provider) => {
     providers.push({
       id: provider,
       name: provider.replace(/\./g, ' '),
@@ -68,7 +76,8 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
   currentTheme: MapTheme = 'CartoDB.Positron';
   availableThemes = getAvailableProviders();
 
-  @ViewChild('mapContainer', { read: ElementRef }) mapContainer?: ElementRef<HTMLElement>;
+  @ViewChild('mapContainer', { read: ElementRef })
+  mapContainer?: ElementRef<HTMLElement>;
 
   constructor(private delegacionesService: DelegacionesService, private router: Router) {
     this.delegaciones = this.delegacionesService.getAll();
@@ -117,9 +126,11 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
       }
     } catch (e) {
       // Fallback a CartoDB si el provider no existe
-      (L as any).tileLayer.provider('CartoDB.Positron', {
-        maxZoom: 20,
-      }).addTo(this.map);
+      (L as any).tileLayer
+        .provider('CartoDB.Positron', {
+          maxZoom: 20,
+        })
+        .addTo(this.map);
     }
 
     // Forzar recálculo de tamaño del mapa
@@ -176,12 +187,10 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
     if (!this.map) {
       return;
     }
-    
+
     const newCenter = delegacion.coordenadas;
     const isSameCenter =
-      this.lastCenter &&
-      this.lastCenter[0] === newCenter[0] &&
-      this.lastCenter[1] === newCenter[1];
+      this.lastCenter && this.lastCenter[0] === newCenter[0] && this.lastCenter[1] === newCenter[1];
 
     if (isSameCenter) {
       return; // No hacer nada si el centro no ha cambiado
@@ -280,7 +289,8 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
       const slides = swiperEl.swiper.slides;
       const activeSlide = slides[activeIndex];
       if (activeSlide) {
-        const delegacion = this.filteredDelegaciones[parseInt(activeSlide.getAttribute('data-index'))];
+        const delegacion =
+          this.filteredDelegaciones[parseInt(activeSlide.getAttribute('data-index'))];
         if (delegacion && delegacion !== this.activeDelegacion) {
           this.activeDelegacion = delegacion;
           this.updateMapMarker(delegacion);
@@ -298,9 +308,10 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
     if (!term) {
       return this.delegaciones;
     }
-    return this.delegaciones.filter(delegacion =>
-      delegacion.nombre.toLowerCase().includes(term) ||
-      delegacion.direccion.toLowerCase().includes(term)
+    return this.delegaciones.filter(
+      (delegacion) =>
+        delegacion.nombre.toLowerCase().includes(term) ||
+        delegacion.direccion.toLowerCase().includes(term),
     );
   }
 }

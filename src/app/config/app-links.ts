@@ -5,7 +5,7 @@ export const FEATURED_LINK: HomeLink = {
   tituloKey: 'HOME.FEATURED_LINK.TITULO',
   descripcionKey: 'HOME.FEATURED_LINK.DESCRIPCION',
   icono: 'time-outline',
-  url: 'https://empatif.e-oer.com/time/'
+  url: 'https://empatif.e-oer.com/time/',
 };
 
 export const HOME_LINKS: HomeLink[] = [
@@ -14,29 +14,29 @@ export const HOME_LINKS: HomeLink[] = [
     tituloKey: 'HOME.HOME_LINKS.PORTAL_TRABAJADOR.TITULO',
     descripcionKey: 'HOME.HOME_LINKS.PORTAL_TRABAJADOR.DESCRIPCION',
     icono: 'person-outline',
-    url: 'https://empatif.e-oer.com/candidato/'
+    url: 'https://empatif.e-oer.com/candidato/',
   },
   {
     id: 'ofertas-empleo',
     tituloKey: 'HOME.HOME_LINKS.OFERTAS_EMPLEO.TITULO',
     descripcionKey: 'HOME.HOME_LINKS.OFERTAS_EMPLEO.DESCRIPCION',
     icono: 'briefcase-outline',
-    url: 'https://empatif.com/encuentra-trabajo/staffing/'
+    url: 'https://empatif.com/encuentra-trabajo/staffing/',
   },
   {
     id: 'formacion',
     tituloKey: 'HOME.HOME_LINKS.FORMACION.TITULO',
     descripcionKey: 'HOME.HOME_LINKS.FORMACION.DESCRIPCION',
     icono: 'school-outline',
-    url: 'https://empatifstaffing.curso-online.net/'
+    url: 'https://empatifstaffing.curso-online.net/',
   },
   {
     id: 'manual',
     tituloKey: 'HOME.HOME_LINKS.MANUAL.TITULO',
     descripcionKey: 'HOME.HOME_LINKS.MANUAL.DESCRIPCION',
     icono: 'help-circle-outline',
-    url: 'https://example.com'
-  }
+    url: 'https://example.com',
+  },
 ];
 
 export const INFO_RECURSOS: RecursoInfo[] = [
@@ -45,14 +45,14 @@ export const INFO_RECURSOS: RecursoInfo[] = [
     tituloKey: 'INFO.INFO_RECURSOS.MANUAL_USUARIO.TITULO',
     tipo: 'pdf',
     seccion: 'recursos',
-    url: 'https://example.com/manual-usuario.pdf'
+    url: 'https://example.com/manual-usuario.pdf',
   },
   {
     id: 'portal-empleado',
     tituloKey: 'INFO.INFO_RECURSOS.PORTAL_EMPLEADO.TITULO',
     tipo: 'link',
     seccion: 'recursos',
-    url: 'https://example.com/portal'
+    url: 'https://example.com/portal',
   },
   {
     id: 'faq',
@@ -67,5 +67,5 @@ export const INFO_RECURSOS: RecursoInfo[] = [
     tipo: 'text',
     seccion: 'guias',
     contenidoKey: 'INFO.INFO_RECURSOS.CONTACTO_SOPORTE.CONTENIDO',
-  }
+  },
 ];

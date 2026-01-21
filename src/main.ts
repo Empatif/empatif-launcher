@@ -11,11 +11,7 @@ import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
 import { provideServiceWorker } from '@angular/service-worker';
 import { provideHttpClient, HttpClient } from '@angular/common/http';
-import {
-  TranslateModule,
-  TranslateLoader,
-  TranslateService,
-} from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 
 class CustomTranslateLoader implements TranslateLoader {
@@ -37,7 +33,7 @@ bootstrapApplication(AppComponent, {
           useFactory: (http: HttpClient) => new CustomTranslateLoader(http),
           deps: [HttpClient],
         },
-      })
+      }),
     ),
     provideHttpClient(),
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

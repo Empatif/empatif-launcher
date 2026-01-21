@@ -19,7 +19,7 @@ export class DelegacionDetallePage {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private delegacionesService: DelegacionesService
+    private delegacionesService: DelegacionesService,
   ) {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -34,7 +34,9 @@ export class DelegacionDetallePage {
     const delegacion = this.delegacion;
 
     const url = delegacion.mapsPlaceId
-      ? `https://www.google.com/maps/search/?api=1&query=${delegacion.coordenadas.join('%2C')}&query_place_id=${delegacion.mapsPlaceId}`
+      ? `https://www.google.com/maps/search/?api=1&query=${delegacion.coordenadas.join(
+          '%2C',
+        )}&query_place_id=${delegacion.mapsPlaceId}`
       : delegacion.mapsUrl ?? 'https://www.google.com/maps';
 
     this.openExternal(delegacion.mapsUrl || url);
