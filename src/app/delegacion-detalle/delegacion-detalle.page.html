@@ -9,43 +9,52 @@
 
 <ion-content [fullscreen]="true">
   <ng-container *ngIf="delegacion; else notFound">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title
-          >{{ 'DELEGACION.DELEGACION' | translate }} {{ delegacion.nombre }}</ion-card-title
-        >
-      </ion-card-header>
-      <ion-card-content>
-        <p>
-          <strong>{{ 'DELEGACION.DETALLE.DIRECCION' | translate }}:</strong> {{ delegacion.direccion
-          }}
-        </p>
-        <p>
-          <strong>{{ 'DELEGACION.DETALLE.TELEFONO' | translate }}:</strong> {{ delegacion.telefono
-          }}
-        </p>
-        <p><strong>{{ 'DELEGACION.DETALLE.EMAIL' | translate }}:</strong> {{ delegacion.email }}</p>
-        <p>
-          <strong>{{ 'DELEGACION.DETALLE.HORARIO' | translate }}:</strong> {{ delegacion.horario }}
-        </p>
-      </ion-card-content>
-    </ion-card>
+    <ion-img
+      [src]="delegacion.imagenUrl"
+      alt="The Wisconsin State Capitol building in Madison, WI at night"
+    ></ion-img>
+    <div class="container">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title
+            >{{ 'DELEGACION.DELEGACION' | translate }} {{ delegacion.nombre }}</ion-card-title
+          >
+        </ion-card-header>
+        <ion-card-content>
+          <p>
+            <strong>{{ 'DELEGACION.DETALLE.DIRECCION' | translate }}:</strong> {{
+            delegacion.direccion }}
+          </p>
+          <p>
+            <strong>{{ 'DELEGACION.DETALLE.TELEFONO' | translate }}:</strong> {{ delegacion.telefono
+            }}
+          </p>
+          <p>
+            <strong>{{ 'DELEGACION.DETALLE.EMAIL' | translate }}:</strong> {{ delegacion.email }}
+          </p>
+          <p>
+            <strong>{{ 'DELEGACION.DETALLE.HORARIO' | translate }}:</strong> {{ delegacion.horario
+            }}
+          </p>
+        </ion-card-content>
+      </ion-card>
 
-    <div class="actions">
-      <ion-button expand="block" [href]="'tel:' + delegacion.telefono">
-        {{ 'DELEGACION.BOTONES.LLAMAR' | translate }}
-      </ion-button>
-      <ion-button expand="block" fill="outline" [href]="'mailto:' + delegacion.email">
-        {{ 'DELEGACION.BOTONES.ENVIAR_EMAIL' | translate }}
-      </ion-button>
-      <ion-button
-        *ngIf="delegacion.mapsUrl || delegacion.mapsPlaceId"
-        expand="block"
-        color="tertiary"
-        (click)="openMap()"
-      >
-        {{ 'DELEGACION.BOTONES.ABRIR_MAPA' | translate }}
-      </ion-button>
+      <div class="actions">
+        <ion-button expand="block" [href]="'tel:' + delegacion.telefono">
+          {{ 'DELEGACION.BOTONES.LLAMAR' | translate }}
+        </ion-button>
+        <ion-button expand="block" fill="outline" [href]="'mailto:' + delegacion.email">
+          {{ 'DELEGACION.BOTONES.ENVIAR_EMAIL' | translate }}
+        </ion-button>
+        <ion-button
+          *ngIf="delegacion.mapsUrl || delegacion.mapsPlaceId"
+          expand="block"
+          color="tertiary"
+          (click)="openMap()"
+        >
+          {{ 'DELEGACION.BOTONES.ABRIR_MAPA' | translate }}
+        </ion-button>
+      </div>
     </div>
   </ng-container>
 
