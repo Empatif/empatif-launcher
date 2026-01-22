@@ -14,13 +14,23 @@
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  background: #e0e0e0;
+  background: var(--ion-color-light);
+
+  @media (prefers-color-scheme: dark) {
+    background: var(--ion-color-dark);
+  }
 
   ::ng-deep {
     .leaflet-container {
       width: 100% !important;
       height: 100% !important;
-      background: #fff;
+      background: var(--ion-color-light);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .leaflet-container {
+        background: var(--ion-color-dark);
+      }
     }
 
     .leaflet-tile-container {

@@ -5,7 +5,6 @@ import {
   ElementRef,
   ViewChild,
   CUSTOM_ELEMENTS_SCHEMA,
-  OnInit,
   OnDestroy,
   inject,
 } from '@angular/core';
@@ -70,14 +69,20 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
   filteredDelegaciones: Delegacion[] = [];
   searchTerm = '';
   activeDelegacion: Delegacion | null = null;
+
   private map: L.Map | null = null;
   private marker: L.Marker | null = null;
+  private tileLayer: any = null;
+
   private searchSubject = new Subject<string>();
   private searchSubscription: any;
   private lastCenter: [number, number] | null = null;
 
+  // Listener de tema
+  private themeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  private themeListener?: (e: MediaQueryListEvent) => void;
+
   // CAMBIA ESTE VALOR PARA PROBAR DIFERENTES TEMAS
-  currentTheme: MapTheme = 'CartoDB.Positron';
   availableThemes = getAvailableProviders();
 
   @ViewChild('mapContainer', { read: ElementRef })
@@ -102,6 +107,18 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
       .subscribe((searchValue: string) => {
         this.performSearch(searchValue);
       });
+
+    // Listener de tema
+    this.themeListener = () => this.onThemeChanged();
+    this.themeMediaQuery.addEventListener('change', this.themeListener);
+  }
+
+  private getCurrentTheme(): MapTheme {
+    return this.isDarkMode() ? 'CartoDB.DarkMatter' : 'CartoDB.Positron';
+  }
+
+  private isDarkMode(): boolean {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
   }
 
   private initializeMap(): void {
@@ -120,17 +137,18 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
       keyboard: false,
     }).setView([40.4637, -3.7492], 6);
 
-    // Agregar capa del tema seleccionado usando leaflet-providers
+    // Capa inicial del tema
     try {
-      const tileLayer = (L as any).tileLayer.provider(this.currentTheme, {
+      this.tileLayer = (L as any).tileLayer.provider(this.getCurrentTheme(), {
         maxZoom: 20,
       });
-      if (tileLayer) {
-        tileLayer.addTo(this.map);
+
+      if (this.tileLayer) {
+        this.tileLayer.addTo(this.map);
       }
     } catch (e) {
       // Fallback a CartoDB si el provider no existe
-      (L as any).tileLayer
+      this.tileLayer = (L as any).tileLayer
         .provider('CartoDB.Positron', {
           maxZoom: 20,
         })
@@ -144,6 +162,27 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
     if (this.activeDelegacion) {
       this.updateMapMarker(this.activeDelegacion);
     }
+  }
+
+  private onThemeChanged(): void {
+    if (!this.map) return;
+
+    const center = this.map.getCenter();
+    const zoom = this.map.getZoom();
+
+    // Cambiar capa sin destruir el mapa
+    if (this.tileLayer) {
+      this.map.removeLayer(this.tileLayer);
+    }
+
+    this.tileLayer = (L as any).tileLayer.provider(this.getCurrentTheme(), {
+      maxZoom: 20,
+    });
+
+    this.tileLayer.addTo(this.map);
+
+    // Mantener centro y zoom
+    this.map.setView(center, zoom, { animate: false });
   }
 
   private createCustomMarker(): L.Marker {
@@ -255,6 +294,11 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
     // Limpiar la suscripción para evitar memory leaks
     if (this.searchSubscription) {
       this.searchSubscription.unsubscribe();
+    }
+
+    // Limpiar listener de tema
+    if (this.themeListener) {
+      this.themeMediaQuery.removeEventListener('change', this.themeListener);
     }
   }
 
