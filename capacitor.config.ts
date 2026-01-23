@@ -13,9 +13,9 @@ const config: CapacitorConfig = {
       backgroundColor: '-ion-color-primary',
       androidScaleType: 'CENTER_CROP',
       splashFullScreen: true,
-      splashImmersive: true
-    }
-  }
+      splashImmersive: true,
+    },
+  },
 };
 
 export default config;

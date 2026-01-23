@@ -1,6 +1,15 @@
-node_modules
-www
-dist
-android
-ios
-coverage
+# Dependencias
+node_modules/
+
+# Build / output
+www/
+dist/
+build/
+
+# Angular
+.angular/
+
+# Otros
+coverage/
+android/
+ios/

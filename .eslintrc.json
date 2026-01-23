@@ -43,6 +43,18 @@
       "files": ["*.html"],
       "extends": ["plugin:@angular-eslint/template/recommended", "prettier"],
       "rules": {}
+    },
+    {
+      "files": ["*.js"],
+      "env": {
+        "node": true,
+        "es2020": true
+      },
+      "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "script"
+      },
+      "rules": {}
     }
   ]
 }

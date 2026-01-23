@@ -11,8 +11,9 @@
     "test": "ng test",
     "lint": "eslint . --ext .ts,.html --ignore-pattern node_modules --ignore-pattern dist",
     "lint:fix": "eslint . --ext .ts,.html --fix --ignore-pattern node_modules --ignore-pattern dist",
-    "format": "prettier --write \"src/**/*.{ts,html,scss}\"",
-    "i18n:extract": "node tools/i18n-extract.js"
+    "format": "prettier --write .",
+    "i18n:extract": "node tools/i18n-extract.js",
+    "http-server": "npx http-server ./www -p 8080"
   },
   "private": true,
   "dependencies": {

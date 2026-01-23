@@ -19,7 +19,7 @@ const TRANSLATE_REGEX = [
 
 function walk(dir) {
   let results = [];
-  fs.readdirSync(dir).forEach(file => {
+  fs.readdirSync(dir).forEach((file) => {
     const fullPath = path.join(dir, file);
     const stat = fs.statSync(fullPath);
     if (stat.isDirectory()) {
@@ -34,9 +34,9 @@ function walk(dir) {
 function extractKeys(files) {
   const keys = new Set();
 
-  files.forEach(file => {
+  files.forEach((file) => {
     const content = fs.readFileSync(file, 'utf8');
-    TRANSLATE_REGEX.forEach(regex => {
+    TRANSLATE_REGEX.forEach((regex) => {
       let match;
       while ((match = regex.exec(content)) !== null) {
         keys.add(match[1]);
@@ -54,11 +54,7 @@ function loadJson(file) {
 
 function deepMergePreserve(target, source) {
   for (const key of Object.keys(source)) {
-    if (
-      typeof source[key] === 'object' &&
-      source[key] !== null &&
-      !Array.isArray(source[key])
-    ) {
+    if (typeof source[key] === 'object' && source[key] !== null && !Array.isArray(source[key])) {
       if (!target[key]) target[key] = {};
       deepMergePreserve(target[key], source[key]);
     } else {
@@ -75,7 +71,7 @@ function sortObjectDeep(obj) {
   const sortedKeys = Object.keys(obj).sort((a, b) => a.localeCompare(b));
 
   const newObj = {};
-  sortedKeys.forEach(key => {
+  sortedKeys.forEach((key) => {
     newObj[key] = sortObjectDeep(obj[key]);
   });
 
@@ -101,7 +97,7 @@ Object.entries(OUTPUT_FILES).forEach(([lang, file]) => {
   const existing = loadJson(file);
   const generated = {};
 
-  keys.forEach(key => {
+  keys.forEach((key) => {
     setNestedKey(generated, key);
   });
 
