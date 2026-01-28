@@ -77,10 +77,10 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
   private map: L.Map | null = null;
   private marker: L.Marker | null = null;
   private tileLayer: any = null;
+  private markerLayer: L.LayerGroup | null = null;
 
   private searchSubject = new Subject<string>();
   private searchSubscription: any;
-  private lastCenter: [number, number] | null = null;
 
   // CAMBIA ESTE VALOR PARA PROBAR DIFERENTES TEMAS
   availableThemes = getAvailableProviders();
@@ -96,10 +96,10 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     // Dar un pequeño delay para asegurar que el DOM está completamente renderizado
-    setTimeout(() => {
+    this.waitForDomReady().then(() => {
       this.initializeMap();
       this.onSlidesReady();
-    }, 150);
+    });
 
     // Configurar debounce para la búsqueda
     this.searchSubscription = this.searchSubject
@@ -113,12 +113,46 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
       this.onThemeChanged();
     });
   }
+  private async waitForCarouselReady(): Promise<void> {
+    return new Promise((resolve) => {
+      const check = () => {
+        const swiperEl = document.querySelector('swiper-container') as HTMLElement;
+        if (swiperEl && swiperEl?.children.length > 0 && swiperEl.offsetHeight > 0) {
+          resolve();
+        } else {
+          requestAnimationFrame(check);
+        }
+      };
+      check();
+    });
+  }
+
+  private async waitForDomReady(): Promise<void> {
+    return new Promise((resolve) => {
+      const check = () => {
+        const mapEl = this.mapContainer?.nativeElement;
+        const searchBarEl = document.querySelector('.search-bar') as HTMLElement;
+        const carouselEl = document.querySelector('.carousel-container') as HTMLElement;
+
+        const mapReady = mapEl && mapEl.offsetHeight > 0 && mapEl.offsetWidth > 0;
+        const searchReady = searchBarEl && searchBarEl.offsetHeight > 0;
+        const carouselReady = carouselEl && carouselEl.offsetHeight > 0;
+
+        if (mapReady && searchReady && carouselReady) {
+          resolve();
+        } else {
+          requestAnimationFrame(check);
+        }
+      };
+      check();
+    });
+  }
 
   private getCurrentTheme(): MapTheme {
     return this.themeService.isDark ? 'CartoDB.DarkMatter' : 'CartoDB.Positron';
   }
 
-  private initializeMap(): void {
+  private async initializeMap(): Promise<void> {
     if (!this.mapContainer?.nativeElement || this.map) {
       return;
     }
@@ -133,6 +167,8 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
       boxZoom: false,
       keyboard: false,
     }).setView([40.4637, -3.7492], 6);
+
+    this.markerLayer = L.layerGroup().addTo(this.map);
 
     // Capa inicial del tema
     try {
@@ -157,7 +193,7 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
 
     // Agregar marcador inicial
     if (this.activeDelegacion) {
-      this.updateMapMarker(this.activeDelegacion);
+      await this.updateMapMarker(this.activeDelegacion);
     }
   }
 
@@ -215,79 +251,43 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
         </div>
       `,
       className: 'empatif-marker-wrapper',
-      iconSize: [60, 80],
-      iconAnchor: [30, 80],
+      iconSize: [60, 70],
+      iconAnchor: [30, 70],
       popupAnchor: [0, -70],
     });
 
     return L.marker(delegacion.coordenadas, { icon });
   }
 
-  private updateMapMarker(delegacion: Delegacion): void {
-    if (!this.map) {
-      return;
-    }
+  private async updateMapMarker(delegacion: Delegacion): Promise<void> {
+    if (!this.map || !this.markerLayer) return;
 
-    const newCenter = delegacion.coordenadas;
-    const isSameCenter =
-      this.lastCenter && this.lastCenter[0] === newCenter[0] && this.lastCenter[1] === newCenter[1];
+    await this.waitForCarouselReady();
 
-    if (isSameCenter) {
-      return; // No hacer nada si el centro no ha cambiado
-    }
+    const markerLatLng = L.latLng(delegacion.coordenadas);
 
-    // Remover marcador anterior
-    if (this.marker) {
-      this.map.removeLayer(this.marker);
-    }
+    // Remover marcador previo
+    this.clearMarkers();
 
-    // Agregar nuevo marcador personalizado
-    this.marker = this.createMarkerForDelegacion(delegacion).addTo(this.map);
+    // Crear marcador
+    this.marker = this.createMarkerForDelegacion(delegacion);
+    this.markerLayer.addLayer(this.marker);
 
-    // Centrar el mapa (SIN animación, instantáneo)
-    this.map.setView(newCenter, 16);
+    // Obtener alturas de los elementos
+    const searchBarHeight =
+      (document.querySelector('.search-bar') as HTMLElement)?.offsetHeight || 0;
+    const carouselHeight =
+      (document.querySelector('.carousel-container') as HTMLElement)?.offsetHeight || 0;
 
-    this.map.invalidateSize();
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        this.adjustMapOffset();
-      });
+    // Ajustar el mapa para centrar el marcador entre search-bar y carousel
+    this.map.fitBounds(L.latLngBounds([markerLatLng]), {
+      paddingTopLeft: [0, searchBarHeight],
+      paddingBottomRight: [0, carouselHeight],
+      maxZoom: 16,
     });
-
-    // Ajustar el offset para que el marcador aparezca centrado entre buscador y carousel
-    this.lastCenter = newCenter;
   }
 
-  private adjustMapOffset(): void {
-    if (!this.map) {
-      return;
-    }
-
-    // Calcular alturas de los elementos
-    const searchBarElement = document.querySelector('.search-bar') as HTMLElement;
-    const carouselContainerElement = document.querySelector('.carousel-container') as HTMLElement;
-
-    if (!searchBarElement || !carouselContainerElement) {
-      return;
-    }
-
-    // Calcular el punto medio entre el buscador y el carousel
-    const searchBarBottom = searchBarElement.getBoundingClientRect().bottom;
-    const carouselTop = carouselContainerElement.getBoundingClientRect().top;
-    const targetCenterY = (searchBarBottom + carouselTop) / 2;
-
-    // Calcular el offset en píxeles desde el centro actual
-    const mapCenter = this.map.getSize().y / 2;
-
-    const offsetPixels = targetCenterY - mapCenter;
-
-    // Aplicar el offset al mapa
-    if (Math.abs(offsetPixels) > 5) {
-      this.map.panBy([0, -offsetPixels], { animate: false });
-    }
-  }
-
-  ngOnDestroy(): void {
+  async ngOnDestroy(): Promise<void> {
     // Limpiar la suscripción para evitar memory leaks
     if (this.searchSubscription) {
       this.searchSubscription.unsubscribe();
@@ -298,15 +298,16 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
     }
   }
 
-  private performSearch(searchValue: string): void {
+  private async performSearch(searchValue: string): Promise<void> {
     this.filteredDelegaciones = this.getFilteredDelegaciones(searchValue);
 
     // Reset al primer resultado y actualizar mapa
     if (this.filteredDelegaciones.length > 0) {
       this.activeDelegacion = this.filteredDelegaciones[0];
-      this.updateMapMarker(this.activeDelegacion);
+      await this.updateMapMarker(this.activeDelegacion);
     } else {
       this.activeDelegacion = null;
+      this.clearMarkers();
     }
   }
 
@@ -324,7 +325,7 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
     this.updateActiveDelegacionFromSlides();
   }
 
-  private updateActiveDelegacionFromSlides(): void {
+  private async updateActiveDelegacionFromSlides(): Promise<void> {
     // Swiper actualiza automáticamente el slide activo, simplemente actualizar el mapa
     const swiperEl = document.querySelector('swiper-container') as any;
 
@@ -337,7 +338,7 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
           this.filteredDelegaciones[parseInt(activeSlide.getAttribute('data-index'))];
         if (delegacion && delegacion !== this.activeDelegacion) {
           this.activeDelegacion = delegacion;
-          this.updateMapMarker(delegacion);
+          await this.updateMapMarker(delegacion);
         }
       }
     }
@@ -357,5 +358,12 @@ export class DelegacionesPage implements AfterViewInit, OnDestroy {
         delegacion.nombre.toLowerCase().includes(term) ||
         delegacion.direccion.toLowerCase().includes(term),
     );
+  }
+
+  private clearMarkers(): void {
+    if (!this.markerLayer) return;
+
+    this.markerLayer.clearLayers();
+    this.marker = null;
   }
 }

@@ -63,9 +63,11 @@
   </div>
 
   <ng-template #emptyState>
-    <div class="empty-state">
-      <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
-      <p>{{ 'DELEGACIONES.ERROR.MENSAJE' | translate }}</p>
-    </div>
+    <ion-card #emptyEl class="empty-state">
+      <ion-card-content>
+        <ion-icon name="alert-circle-outline" aria-hidden="true" color="warning"></ion-icon>
+        <p>{{ 'DELEGACIONES.ERROR.MENSAJE' | translate }}</p>
+      </ion-card-content>
+    </ion-card>
   </ng-template>
 </ion-content>

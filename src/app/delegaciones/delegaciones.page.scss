@@ -1,5 +1,4 @@
 .delegaciones-content {
-  --background: transparent;
   position: relative;
   width: 100%;
   height: 100%;
@@ -14,11 +13,7 @@
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  background: var(--ion-color-light);
-
-  @media (prefers-color-scheme: dark) {
-    background: var(--ion-color-dark);
-  }
+  background: var(--ion-background-color);
 
   ::ng-deep {
     .leaflet-container {
@@ -124,9 +119,17 @@
 }
 
 .empty-state {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* por encima del mapa */
   text-align: center;
-  color: var(--ion-color-medium);
-  margin-top: 48px;
+  color: var(--ion-text-color);
+
+  ion-icon {
+    font-size: 36px;
+  }
 }
 
 /* Estilos personalizados para el marcador Empatif */
@@ -140,7 +143,7 @@
   .empatif-marker {
     position: relative;
     width: 60px;
-    height: 80px;
+    height: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
