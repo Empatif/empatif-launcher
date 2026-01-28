@@ -19,11 +19,19 @@ export class DelegacionDetallePage {
   private delegacionesService = inject(DelegacionesService);
 
   delegacion?: Delegacion;
+  cleanTel?: string;
+  validTel?: boolean;
+  validEmail?: boolean;
 
   constructor() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.delegacion = this.delegacionesService.getById(id);
+      this.cleanTel = this.delegacion?.telefono
+        ? this.delegacion.telefono.replace(/\s+/g, '')
+        : undefined;
+      this.validTel = this.cleanTel ? Number.isInteger(+this.cleanTel) : false;
+      this.validEmail = this.delegacion?.email ? this.delegacion.email.includes('@') : false;
     }
   }
 

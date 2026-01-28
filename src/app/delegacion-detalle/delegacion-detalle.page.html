@@ -21,29 +21,48 @@
           >
         </ion-card-header>
         <ion-card-content>
-          <p>
+          <p *ngIf="delegacion.direccion">
             <strong>{{ 'DELEGACION.DETALLE.DIRECCION' | translate }}:</strong> {{
             delegacion.direccion }}
           </p>
-          <p>
+          <p *ngIf="delegacion.telefono">
             <strong>{{ 'DELEGACION.DETALLE.TELEFONO' | translate }}:</strong> {{ delegacion.telefono
             }}
           </p>
-          <p>
+          <p *ngIf="delegacion.email">
             <strong>{{ 'DELEGACION.DETALLE.EMAIL' | translate }}:</strong> {{ delegacion.email }}
           </p>
-          <p>
-            <strong>{{ 'DELEGACION.DETALLE.HORARIO' | translate }}:</strong> {{ delegacion.horario
-            }}
-          </p>
+          <div *ngIf="delegacion.horario.length" class="horario">
+            <p class="horario-label">
+              <strong>{{ 'DELEGACION.DETALLE.HORARIO' | translate }}:&nbsp;</strong>
+            </p>
+            <div>
+              <p class="horario-row" *ngFor="let tramo of delegacion.horario">
+                <ng-container *ngIf="tramo.desdeKey; else diaUnico"
+                  >{{ tramo.desdeKey | translate }} a {{ tramo.hastaKey | translate
+                  }}:</ng-container
+                >
+                <ng-template #diaUnico> {{ tramo.diaKey | translate }}:</ng-template>
+                &nbsp;
+                <span class="horario-hora"> {{ tramo.inicio }} - {{ tramo.fin }}</span>
+              </p>
+            </div>
+          </div>
         </ion-card-content>
       </ion-card>
 
-      <div class="actions">
-        <ion-button expand="block" [href]="'tel:' + delegacion.telefono">
+      <ion-card class="actions">
+        <ion-button *ngIf="validTel" expand="block" [href]="'tel:' + cleanTel">
+          <ion-icon name="call-outline" aria-hidden="true" slot="start"></ion-icon>
           {{ 'DELEGACION.BOTONES.LLAMAR' | translate }}
         </ion-button>
-        <ion-button expand="block" fill="outline" [href]="'mailto:' + delegacion.email">
+        <ion-button
+          *ngIf="validEmail"
+          expand="block"
+          fill="outline"
+          [href]="'mailto:' + delegacion.email"
+        >
+          <ion-icon name="send-outline" aria-hidden="true" slot="start"></ion-icon>
           {{ 'DELEGACION.BOTONES.ENVIAR_EMAIL' | translate }}
         </ion-button>
         <ion-button
@@ -52,9 +71,10 @@
           color="tertiary"
           (click)="openMap()"
         >
+          <ion-icon name="map-outline" aria-hidden="true" slot="start"></ion-icon>
           {{ 'DELEGACION.BOTONES.ABRIR_MAPA' | translate }}
         </ion-button>
-      </div>
+      </ion-card>
     </div>
   </ng-container>
 

@@ -28,6 +28,15 @@
     },
     "TITULO": "Delegacións"
   },
+  "GENERAL": {
+    "DOMINGO": "Domingo",
+    "JUEVES": "Xoves",
+    "LUNES": "Luns",
+    "MARTES": "Martes",
+    "MIERCOLES": "Mércores",
+    "SABADO": "Sábado",
+    "VIERNES": "Venres"
+  },
   "HOME": {
     "FEATURED_LINK": {
       "DESCRIPCION": "Rexistra a túa xornada laboral facilmente.",

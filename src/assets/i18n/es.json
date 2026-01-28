@@ -28,6 +28,15 @@
     },
     "TITULO": "Delegaciones"
   },
+  "GENERAL": {
+    "DOMINGO": "Domingo",
+    "JUEVES": "Jueves",
+    "LUNES": "Lunes",
+    "MARTES": "Martes",
+    "MIERCOLES": "Miércoles",
+    "SABADO": "Sábado",
+    "VIERNES": "Domingo"
+  },
   "HOME": {
     "FEATURED_LINK": {
       "DESCRIPCION": "Registra tu jornada laboral fácilmente.",

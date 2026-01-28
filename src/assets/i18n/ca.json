@@ -28,6 +28,15 @@
     },
     "TITULO": "Delegacions"
   },
+  "GENERAL": {
+    "DOMINGO": "Diumenge",
+    "JUEVES": "Dijous",
+    "LUNES": "Dilluns",
+    "MARTES": "Dimarts",
+    "MIERCOLES": "Dimecres",
+    "SABADO": "Dissabte",
+    "VIERNES": "Divendres"
+  },
   "HOME": {
     "FEATURED_LINK": {
       "DESCRIPCION": "Registra la teva jornada laboral fàcilment.",

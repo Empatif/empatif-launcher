@@ -31,7 +31,13 @@ export interface Delegacion {
   direccion: string;
   telefono: string;
   email: string;
-  horario: string;
+  horario: {
+    diaKey?: string;
+    desdeKey?: string;
+    hastaKey?: string;
+    inicio: string;
+    fin: string;
+  }[];
   imagenUrl: string;
   mapsUrl?: string;
   mapsPlaceId?: string;

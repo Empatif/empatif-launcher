@@ -9,11 +9,20 @@ ion-card {
   -webkit-box-shadow: none;
 }
 
+.horario {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.horario-dia {
+  text-align: end;
+}
+
 .actions {
-  padding: 0 16px 16px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 6px;
+  background: transparent;
 }
 
 .empty-state {
